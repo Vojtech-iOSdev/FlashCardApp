@@ -68,7 +68,7 @@ struct StudyView: View {
                     
                     Spacer()
                     
-                    #warning ("flashCard element")
+                    #warning ("flashCard element :))")
                     VStack {
                         
                         Card(deckFrontPosition: $deckFrontPosition, deckBackPosition: $deckBackPosition)
