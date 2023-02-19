@@ -11,6 +11,7 @@ struct CreateView: View {
     
     @Binding var presented: Bool
     @State var createNewCardScreen: Bool = false
+    @State var createEditDeckScreen: Bool = false
     
     var body: some View {
         
@@ -44,9 +45,9 @@ struct CreateView: View {
                 }
                 
                 Button {
-                    
+                    createEditDeckScreen.toggle()
                 } label: {
-                    Text("create new deck")
+                    Text("edit deck")
                         .padding()
                         .font(.system(.largeTitle, design: .rounded, weight: .heavy))
                         .frame(width: 320, height: 100, alignment: .center)
@@ -67,7 +68,21 @@ struct CreateView: View {
                 }
             }.zIndex(2)
             
-        }//.navigationTitle("createView")
+//            ZStack {
+//                if createEditDeckScreen {
+//                    EditDeckView(createEditDeckScreen: $createEditDeckScreen)
+//                        .transition(.move(edge: .leading))
+//                        .animation(.default)
+//                }
+//            }.zIndex(2)
+            
+            .fullScreenCover(isPresented: $createEditDeckScreen) {
+                    EditDeckView(createEditDeckScreen: $createEditDeckScreen)
+                        .transition(.move(edge: .leading))
+                        .animation(.default)
+                }
+            
+        }
         
     }
 }
