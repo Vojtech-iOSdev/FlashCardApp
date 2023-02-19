@@ -13,74 +13,46 @@ struct StudyView: View {
     
     @State var deckFrontPosition: Int = 0
     @State var deckBackPosition: Int = 0
-//    @State var positionForComparison = viewModel.deckFront.count-1
-
+    //    @State var positionForComparison = viewModel.deckFront.count-1
+    
     
     var body: some View {
         
         NavigationView {
             ZStack {
                 
-                ZStack{
-                    LinearGradient(colors: [Color.orange.opacity(0.8), Color.orange.opacity(0.5)], startPoint: .topTrailing, endPoint: .bottomLeading)
-                    
-                    Circle()
-                        .frame(width: 400)
-                        .foregroundColor(Color.orange.opacity(0.5))
-                        .blur(radius: 16)
-                        .offset(x: -180, y: 50)
-                    
-                    RoundedRectangle(cornerRadius: 32, style: .continuous)
-                        .frame(width: 700, height: 320)
-                        .foregroundColor(Color.orange.opacity(0.6))
-                        .offset(x: 80, y: -305)
-                        .blur(radius: 30)
-                        .rotationEffect(Angle(degrees: 115))
-                    
-                    Image(systemName: "triangle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300, alignment: .center)
-                        .foregroundColor(Color.orange.opacity(0.8))
-                        .rotationEffect(Angle(degrees: 45))
-                        .offset(x: 100, y: -260)
-                        .blur(radius: 30)
-                    
-                }.ignoresSafeArea()
+                Background
                 
                 VStack {
                     
                     Spacer()
-                    
-                    HStack{
-                        
-                        Text("deckname")
+                
+                    #warning ("deck menu")
+                    VStack{
+                          
+                        Label("TOP100 ENG", systemImage: "arrowtriangle.down.square")
                             .font(.system(.headline, design: .rounded, weight: .semibold))
-                            .frame(width: 150, height: 40, alignment: .center)
+                            .frame(width: 170, height: 40, alignment: .center)
                             .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                        
-                        
-                        //tap bar elemennt with all decks available, nejlepe kdyby slo kliknout na cely text aby to bylo lehke na zmacknuti a nemusel to byt HStack a bylo by to hezky schovany ale potrebovalo by to nejaky indikator!!!
-                        
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
                         
                     }
                     
                     Spacer()
                     
-                    #warning ("flashCard element :))")
+                    #warning ("flashCard element")
                     VStack {
-                        
                         Card(deckFrontPosition: $deckFrontPosition, deckBackPosition: $deckBackPosition)
-                        
-                        
-                        //Image(systemName: "square")
                         
                     }
                     .padding()
                     .frame(width: 360, height: 250, alignment: .center)
                     .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 80, style: .continuous))
+                    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+                    
+                    
                     
                     
                     Spacer()
@@ -89,37 +61,18 @@ struct StudyView: View {
                         
                         Spacer()
                         
-                        //LAST BUTTON
+                        #warning("LAST BUTTON")
                         Button {
-                            if  deckFrontPosition < 1 && deckBackPosition < 1{
-                                
-                                deckFrontPosition = 0
-                                deckBackPosition = 0
-                            }
+                            showLastCard()
                             
-                            else{
-                                deckFrontPosition -= 1
-                                deckBackPosition -= 1
-                            }
                         } label: {
                             
                             MyButton(title: "last", titleIcon: "arrow.uturn.left")
                         }
                         
-                        //NEXT BUTTON
+                        #warning("NEXT BUTTON")
                         Button {
-                            // funkční
-                           if  deckFrontPosition < viewModel.deckFront.count-1 && deckBackPosition < viewModel.deckFront.count-1{
-
-                               deckFrontPosition += 1
-                               deckBackPosition += 1
-                           }
-                            
-                           else if deckFrontPosition == viewModel.deckFront.count-1 && deckBackPosition == viewModel.deckFront.count-1{
-
-                           }
-                            
-                            
+                            showNextCard()
                             
                         } label: {
                             
@@ -139,12 +92,83 @@ struct StudyView: View {
         }
         
     }
+    func showLastCard() {
+        if  deckFrontPosition < 1 && deckBackPosition < 1{
+            
+            deckFrontPosition = 0
+            deckBackPosition = 0
+        }
+        
+        else{
+            deckFrontPosition -= 1
+            deckBackPosition -= 1
+        }
+    }
+    
+    func showNextCard() {
+        if viewModel.flipped == true {
+            viewModel.flipped = false
+            if  deckFrontPosition < viewModel.deckFront.count-1 && deckBackPosition < viewModel.deckFront.count-1{
+                
+                deckFrontPosition += 1
+                deckBackPosition += 1
+            }
+            
+            else if deckFrontPosition == viewModel.deckFront.count-1 && deckBackPosition == viewModel.deckFront.count-1{
+                
+            }
+            
+        }else {
+            if  deckFrontPosition < viewModel.deckFront.count-1 && deckBackPosition < viewModel.deckFront.count-1{
+                
+                deckFrontPosition += 1
+                deckBackPosition += 1
+            }
+            
+            else if deckFrontPosition == viewModel.deckFront.count-1 && deckBackPosition == viewModel.deckFront.count-1{
+                
+            }
+        }
+    }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
         StudyView()
             .environmentObject(EnvironmentViewModel())
+    }
+}
+
+extension StudyView {
+    
+    private var Background: some View {
+        
+        ZStack{
+            LinearGradient(colors: [Color.orange.opacity(0.8), Color.orange.opacity(0.5)], startPoint: .topTrailing, endPoint: .bottomLeading)
+            
+            Circle()
+                .frame(width: 400)
+                .foregroundColor(Color.orange.opacity(0.5))
+                .blur(radius: 16)
+                .offset(x: -180, y: 50)
+            
+            RoundedRectangle(cornerRadius: 32, style: .continuous)
+                .frame(width: 700, height: 320)
+                .foregroundColor(Color.orange.opacity(0.6))
+                .offset(x: 80, y: -305)
+                .blur(radius: 30)
+                .rotationEffect(Angle(degrees: 115))
+            
+            Image(systemName: "triangle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 300, height: 300, alignment: .center)
+                .foregroundColor(Color.orange.opacity(0.8))
+                .rotationEffect(Angle(degrees: 45))
+                .offset(x: 100, y: -260)
+                .blur(radius: 30)
+            
+        }.ignoresSafeArea()
     }
 }
 

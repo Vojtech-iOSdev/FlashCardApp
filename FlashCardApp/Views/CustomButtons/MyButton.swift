@@ -21,6 +21,8 @@ struct MyButton: View {
             .frame(width: 150, height: 50, alignment: .center)
             .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+
     }
 }
 
@@ -36,6 +38,8 @@ struct MyButton2: View {
             .frame(width: 220, height: 50, alignment: .center)
             .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+
     }
 }
 

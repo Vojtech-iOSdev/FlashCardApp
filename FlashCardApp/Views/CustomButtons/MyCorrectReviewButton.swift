@@ -16,7 +16,6 @@ struct MyCorrectReviewButton: View {
     var body: some View {
         
         Button{
-            //ACTION FOR BUTTON LATER
             createCardPosition()
             
         } label: {
@@ -30,14 +29,12 @@ struct MyCorrectReviewButton: View {
                
     }
     func createCardPosition() {
-        //viewModel.gridWords = []
+        
         viewModel.cardPosition = Int.random(in: 0...viewModel.deckFront.count-1)
         viewModel.cardPosition2 = Int.random(in: 0...viewModel.deckFront.count-1)
         viewModel.cardPosition3 = Int.random(in: 0...viewModel.deckFront.count-1)
         viewModel.cardPosition4 = Int.random(in: 0...viewModel.deckFront.count-1)
-        
-        
-        
+  
     }
 }
 

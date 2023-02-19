@@ -7,27 +7,25 @@
 
 import SwiftUI
 
-
-
 struct Card: View {
     
     @EnvironmentObject var viewModel:EnvironmentViewModel
-
     
-    @State var flipped:Bool = false
     @Binding var deckFrontPosition: Int
     @Binding var deckBackPosition: Int
     
     var body: some View {
         
         Button {
-            flipped.toggle()
+            viewModel.flipped.toggle()
         } label: {
-            if flipped == false {
-                Text(viewModel.deckFront[deckFrontPosition]).font(.system(.largeTitle, design: .rounded, weight: .bold))
+            if viewModel.flipped == false {
+                Text(viewModel.deckFront[deckFrontPosition])
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
             }
             else {
-                Text(viewModel.deckBack[deckBackPosition]).font(.system(.largeTitle, design: .rounded, weight: .bold))
+                Text(viewModel.deckBack[deckBackPosition])
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
             }
         }
         
