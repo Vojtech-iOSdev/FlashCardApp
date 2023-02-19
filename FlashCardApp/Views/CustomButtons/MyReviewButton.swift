@@ -12,15 +12,25 @@ struct MyReviewButton: View {
     @EnvironmentObject var viewModel:EnvironmentViewModel
     
     var stackPosition: Int
-    @State var isAnimated: Bool = false
+    @State var isAnimatedCorrect: Bool = false
+    @State var isAnimatedWrong: Bool = false
+
     
     var body: some View {
         
         Button{
-            viewModel.gridWords = []
-            viewModel.createCardPosition()
-            viewModel.generateGridWordsRandomPosition()
-            checkForAnswer()
+            withAnimation(Animation.default) {
+                checkForAnswer()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                viewModel.gridWords = []
+                viewModel.createCardPosition()
+                viewModel.generateGridWordsRandomPosition()
+                isAnimatedCorrect = false
+                isAnimatedWrong = false
+            }
+          
+            
             
         } label: {
             Text(viewModel.deckBack[stackPosition])
@@ -31,16 +41,20 @@ struct MyReviewButton: View {
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
                 .frame(width: 165, height: 165, alignment: .center)
-                .background(isAnimated ? Color.green.opacity(1) : Color.white.opacity(0))
+                .background(isAnimatedCorrect ? Color.green.opacity(1) : Color.white.opacity(0))
+                .background(isAnimatedWrong ? Color.red.opacity(1) : Color.white.opacity(0))
                     
         }
                
     }
     func checkForAnswer() {
         if stackPosition == viewModel.gridWords[viewModel.gridWordsRandomPosition] {
-            isAnimated = true
+            isAnimatedCorrect = true
+            viewModel.correctCounter += 1
         }else{
-            isAnimated = false
+            isAnimatedWrong = true
+            viewModel.wrongCounter += 1
+
         }
         
     }

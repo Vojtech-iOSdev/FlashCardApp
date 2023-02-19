@@ -59,11 +59,13 @@ struct CreateView: View {
                 
             }.padding(.top)
             
-            
-            if createNewCardScreen {
-                CreateCardView(createNewCardScreen: $createNewCardScreen)
-                    .transition(.move(edge: .bottom))
-            }
+            ZStack {
+                if createNewCardScreen {
+                    CreateCardView(createNewCardScreen: $createNewCardScreen)
+                        .transition(.move(edge: .leading))
+                        .animation(.default)
+                }
+            }.zIndex(2)
             
         }//.navigationTitle("createView")
         

@@ -39,6 +39,8 @@ struct TapBarView: View {
                     
                     Spacer().fullScreenCover(isPresented: $presented) {
                         CreateView(presented: $presented)
+                            .transition(.move(edge: .bottom))
+                            .animation(.default)
                         
                     }
                     
@@ -48,6 +50,7 @@ struct TapBarView: View {
                         
                     case 1:
                         CreateView(presented: $presented)
+                            
                         
                     default:
                         ReviewView()

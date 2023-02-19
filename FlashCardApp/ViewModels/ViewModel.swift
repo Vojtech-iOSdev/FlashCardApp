@@ -10,11 +10,11 @@ import SwiftUI
 class EnvironmentViewModel:ObservableObject {
     
     @Published var deckFront: [String] = [
-        "apple", "pear", "orange", "pumpkin", "banana"
+        "people","car", "house", "mother", "father","sister", "brother", "dog", "cat", "city", "door", "window", "forest", "river", "water", "tree", "bird", "apple", "pear", "orange", "lemon", "banana"
     ]
     
     @Published var deckBack:[String] = [
-        "jablko", "hruška", "pomeranč", "dýně", "banán"
+        "lidi","auto", "dům", "máma", "táta","sestra", "bratr", "pes", "kočka", "město", "dveře", "okno", "les", "řeka", "voda", "strom", "pták", "jablko", "hruška", "pomeranč", "citrón", "banán"
     ]
     
    // @Published var randomNumber: Int = 0
@@ -22,13 +22,15 @@ class EnvironmentViewModel:ObservableObject {
     
     @Published var gridWords: [Int] = [0, 0, 0, 0]
     @Published var gridWordsRandomPosition: Int = 0
-
     
     @Published var cardPosition: Int = 0
     @Published var cardPosition2: Int = 0
     @Published var cardPosition3: Int = 0
     @Published var cardPosition4: Int = 0
     
+    @Published var correctCounter: Int = 0
+    @Published var wrongCounter: Int = 0
+
     
     init() {
         
@@ -38,10 +40,11 @@ class EnvironmentViewModel:ObservableObject {
     
     func generateGridWordsRandomPosition() {
         gridWordsRandomPosition = Int.random(in: 0...3)
+        
+        
     }
 
     func createCardPosition() {
-        //viewModel.gridWords = []
         cardPosition = Int.random(in: 0...deckFront.count-1)
         cardPosition2 = Int.random(in: 0...deckFront.count-1)
         cardPosition3 = Int.random(in: 0...deckFront.count-1)
@@ -52,13 +55,13 @@ class EnvironmentViewModel:ObservableObject {
             cardPosition = Int.random(in: 0...deckFront.count-1)
         }
         if cardPosition == cardPosition3{
-            cardPosition = Int.random(in: 0...deckFront.count-1)
+            cardPosition3 = Int.random(in: 0...deckFront.count-1)
         }
         if cardPosition == cardPosition4{
-            cardPosition = Int.random(in: 0...deckFront.count-1)
+            cardPosition4 = Int.random(in: 0...deckFront.count-1)
         }
         if cardPosition2 == cardPosition3{
-            cardPosition2 = Int.random(in: 0...deckFront.count-1)
+            cardPosition3 = Int.random(in: 0...deckFront.count-1)
         }
         if cardPosition2 == cardPosition4{
             cardPosition2 = Int.random(in: 0...deckFront.count-1)

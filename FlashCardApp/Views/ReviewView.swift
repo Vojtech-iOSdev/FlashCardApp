@@ -26,8 +26,22 @@ struct ReviewView: View {
                     //MyButton2(title: viewModel.deckBack[viewModel.cardPosition])
                     MyButton2(title: viewModel.deckFront[viewModel.gridWords[viewModel.gridWordsRandomPosition]])
                     
-                    Text("change deck")
+                    HStack(alignment: .center) {
+                        Text(String(viewModel.correctCounter))
+                            .foregroundColor(Color.green)
+                        Text("|").font(.largeTitle)
+                            .padding(.bottom, 5)
+                        Text(String(viewModel.wrongCounter))
+                            .foregroundColor(Color.red)
 
+
+                    }
+                    .padding()
+                    .font(.system(.title2, design: .rounded, weight: .semibold))
+                    .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
+                    .frame(height: 50)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .circular))
+                    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
                     
                 }.padding(.horizontal)
                 

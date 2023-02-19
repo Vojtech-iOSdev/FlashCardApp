@@ -13,8 +13,6 @@ struct StudyView: View {
     
     @State var deckFrontPosition: Int = 0
     @State var deckBackPosition: Int = 0
-    //    @State var positionForComparison = viewModel.deckFront.count-1
-    
     
     var body: some View {
         
@@ -30,7 +28,7 @@ struct StudyView: View {
                     #warning ("deck menu")
                     VStack{
                           
-                        Label("TOP100 ENG", systemImage: "arrowtriangle.down.square")
+                        Label("FlashCardDeck", systemImage: "arrowtriangle.down.square")
                             .font(.system(.headline, design: .rounded, weight: .semibold))
                             .frame(width: 170, height: 40, alignment: .center)
                             .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
@@ -43,10 +41,25 @@ struct StudyView: View {
                     
                     #warning ("flashCard element")
                     VStack {
-                        Card(deckFrontPosition: $deckFrontPosition, deckBackPosition: $deckBackPosition)
+                        Button {
+                            viewModel.flipped.toggle()
+                        } label: {
+                            if viewModel.flipped == false {
+                                Text(viewModel.deckFront[deckFrontPosition])
+                                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                                    .frame(width: 360, height: 250, alignment: .center)
+                                    .cornerRadius(80)
+                            }
+                            else {
+                                Text(viewModel.deckBack[deckBackPosition])
+                                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                                    .frame(width: 360, height: 250, alignment: .center)
+                                    .cornerRadius(80)
+
+                            }
+                        }
                         
                     }
-                    .padding()
                     .frame(width: 360, height: 250, alignment: .center)
                     .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 80, style: .continuous))
