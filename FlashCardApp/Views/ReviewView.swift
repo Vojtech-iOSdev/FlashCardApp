@@ -20,7 +20,7 @@ struct ReviewView: View {
             VStack{
                 
                 Spacer()
-
+                
                 HStack(spacing: 15) {
                     
                     //MyButton2(title: viewModel.deckBack[viewModel.cardPosition])
@@ -33,8 +33,8 @@ struct ReviewView: View {
                             .padding(.bottom, 5)
                         Text(String(viewModel.wrongCounter))
                             .foregroundColor(Color.red)
-
-
+                        
+                        
                     }
                     .padding()
                     .font(.system(.title2, design: .rounded, weight: .semibold))
@@ -52,18 +52,18 @@ struct ReviewView: View {
                 
                 VStack(spacing: 15){
                     HStack(spacing: 15){
-                        MyReviewButton(stackPosition: viewModel.gridWords[0])
-                        MyReviewButton(stackPosition: viewModel.gridWords[1])
+                        MyReviewButton(stackPosition: viewModel.gridWords[0]).disabled(viewModel.disableButton)
+                        MyReviewButton(stackPosition: viewModel.gridWords[1]).disabled(viewModel.disableButton)
                     }
                     
                     HStack(spacing: 15){
-                        MyReviewButton(stackPosition: viewModel.gridWords[2])
-                        MyReviewButton(stackPosition: viewModel.gridWords[3])
+                        MyReviewButton(stackPosition: viewModel.gridWords[2]).disabled(viewModel.disableButton)
+                        MyReviewButton(stackPosition: viewModel.gridWords[3]).disabled(viewModel.disableButton)
                     }
                 }
-               
+                
                 Spacer()
-
+                
             }
             .onAppear {
                 viewModel.gridWords = []

@@ -24,49 +24,39 @@ struct StudyView: View {
                 VStack {
                     
                     Spacer()
-                
-                    #warning ("deck menu")
+                    
+#warning ("deck menu")
                     VStack{
-                          
-                        Label("FlashCardDeck", systemImage: "arrowtriangle.down.square")
-                            .font(.system(.headline, design: .rounded, weight: .semibold))
-                            .frame(width: 170, height: 40, alignment: .center)
+                        
+                        Text("Free Flash Cards")
+                            .font(.system(.largeTitle, design: .rounded, weight: .heavy))
+                            .frame(width: 350, height: 100, alignment: .center)
                             .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
-                        
+                            .underline()
                     }
                     
                     Spacer()
                     
-                    #warning ("flashCard element")
+#warning ("flashCard element")
                     VStack {
                         Button {
                             viewModel.flipped.toggle()
                         } label: {
                             if viewModel.flipped == false {
-                                Text(viewModel.deckFront[deckFrontPosition])
-                                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .frame(width: 360, height: 250, alignment: .center)
-                                    .cornerRadius(80)
-                            }
-                            else {
-                                Text(viewModel.deckBack[deckBackPosition])
-                                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .frame(width: 360, height: 250, alignment: .center)
-                                    .cornerRadius(80)
-
+                                FlashCardView(language: "english", cardWord: viewModel.deckFront[deckFrontPosition])
+                                
+                            }else {
+                                FlashCardView(language: "czech", cardWord: viewModel.deckBack[deckBackPosition])
+                                
                             }
                         }
-                        
                     }
                     .frame(width: 360, height: 250, alignment: .center)
                     .foregroundStyle(.linearGradient(colors: [Color.white.opacity(1)], startPoint: .top, endPoint: .bottom))
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 80, style: .continuous))
                     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
-                    
-                    
-                    
                     
                     Spacer()
                     
@@ -74,7 +64,7 @@ struct StudyView: View {
                         
                         Spacer()
                         
-                        #warning("LAST BUTTON")
+#warning("LAST BUTTON")
                         Button {
                             showLastCard()
                             
@@ -83,7 +73,7 @@ struct StudyView: View {
                             MyButton(title: "last", titleIcon: "arrow.uturn.left")
                         }
                         
-                        #warning("NEXT BUTTON")
+#warning("NEXT BUTTON")
                         Button {
                             showNextCard()
                             

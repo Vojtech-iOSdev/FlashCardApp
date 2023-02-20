@@ -11,13 +11,12 @@
 		811C909D2998176400D22201 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C909C2998176400D22201 /* MyButton.swift */; };
 		811C909F29983FF100D22201 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C909E29983FF100D22201 /* ViewModel.swift */; };
 		811CCE27299B72F10060BA57 /* MyReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811CCE26299B72F10060BA57 /* MyReviewButton.swift */; };
-		811FBB532996E1130094D529 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811FBB522996E1130094D529 /* CreateView.swift */; };
 		811FBB552996E1290094D529 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811FBB542996E1290094D529 /* ReviewView.swift */; };
 		817218F629851E0B00172B10 /* FlashCardAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817218F529851E0B00172B10 /* FlashCardAppApp.swift */; };
 		817218F829851E0B00172B10 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817218F729851E0B00172B10 /* StudyView.swift */; };
 		817218FA29851E0C00172B10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817218F929851E0C00172B10 /* Assets.xcassets */; };
 		817218FD29851E0C00172B10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817218FC29851E0C00172B10 /* Preview Assets.xcassets */; };
-		8177D51F29A2C5BD002E34D0 /* EditDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177D51E29A2C5BD002E34D0 /* EditDeckView.swift */; };
+		818B296E29A423E900D228AC /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B296D29A423E900D228AC /* FlashCardView.swift */; };
 		819B002A299956B0008D6922 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819B0029299956B0008D6922 /* CreateCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,14 +25,13 @@
 		811C909C2998176400D22201 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		811C909E29983FF100D22201 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		811CCE26299B72F10060BA57 /* MyReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewButton.swift; sourceTree = "<group>"; };
-		811FBB522996E1130094D529 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		811FBB542996E1290094D529 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		817218F229851E0B00172B10 /* FlashCardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		817218F529851E0B00172B10 /* FlashCardAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardAppApp.swift; sourceTree = "<group>"; };
 		817218F729851E0B00172B10 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 		817218F929851E0C00172B10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817218FC29851E0C00172B10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8177D51E29A2C5BD002E34D0 /* EditDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckView.swift; sourceTree = "<group>"; };
+		818B296D29A423E900D228AC /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		819B0029299956B0008D6922 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,10 +112,9 @@
 			children = (
 				811C909A29978DA800D22201 /* TapBarView.swift */,
 				817218F729851E0B00172B10 /* StudyView.swift */,
-				811FBB522996E1130094D529 /* CreateView.swift */,
-				811FBB542996E1290094D529 /* ReviewView.swift */,
+				818B296D29A423E900D228AC /* FlashCardView.swift */,
 				819B0029299956B0008D6922 /* CreateCardView.swift */,
-				8177D51E29A2C5BD002E34D0 /* EditDeckView.swift */,
+				811FBB542996E1290094D529 /* ReviewView.swift */,
 				811CCE28299B73040060BA57 /* CustomButtons */,
 			);
 			path = Views;
@@ -196,9 +193,8 @@
 				811C909B29978DA800D22201 /* TapBarView.swift in Sources */,
 				811C909D2998176400D22201 /* MyButton.swift in Sources */,
 				811CCE27299B72F10060BA57 /* MyReviewButton.swift in Sources */,
+				818B296E29A423E900D228AC /* FlashCardView.swift in Sources */,
 				817218F829851E0B00172B10 /* StudyView.swift in Sources */,
-				8177D51F29A2C5BD002E34D0 /* EditDeckView.swift in Sources */,
-				811FBB532996E1130094D529 /* CreateView.swift in Sources */,
 				817218F629851E0B00172B10 /* FlashCardAppApp.swift in Sources */,
 				811C909F29983FF100D22201 /* ViewModel.swift in Sources */,
 				811FBB552996E1290094D529 /* ReviewView.swift in Sources */,

@@ -13,7 +13,7 @@ struct TapBarView: View {
     
     @State var selectedIndex:Int = 0
     @State private var presented:Bool = false
-    
+        
     let icons = [
         "graduationcap",
         "plus.app",
@@ -34,14 +34,15 @@ struct TapBarView: View {
             
             VStack {
                 
-                #warning("SubViews")
+#warning("SubViews")
                 ZStack {
                     
                     Spacer().fullScreenCover(isPresented: $presented) {
-                        CreateView(presented: $presented)
-                            .transition(.move(edge: .bottom))
-                            .animation(.default)
-                        
+                        withAnimation(.default) {
+                            CreateCardView(presented: $presented)
+                                .transition(.move(edge: .bottom))
+                            
+                        }
                     }
                     
                     switch selectedIndex {
@@ -49,8 +50,8 @@ struct TapBarView: View {
                         StudyView()
                         
                     case 1:
-                        CreateView(presented: $presented)
-                            
+                        CreateCardView(presented: $presented)
+                        
                         
                     default:
                         ReviewView()
@@ -58,7 +59,7 @@ struct TapBarView: View {
                     
                 }.environmentObject(viewModel)
                 
-                #warning("TabBar")
+#warning("TabBar")
                 HStack(spacing: 20){
                     ForEach(0..<3, id: \.self) {number in
                         
@@ -77,19 +78,22 @@ struct TapBarView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .font(.system(.largeTitle, design: .rounded, weight: .semibold))
-                                    .foregroundColor(selectedIndex == number ? Color.white.opacity(2) : Color.white.opacity(0.8))
+                                    .foregroundColor(selectedIndex == number ? Color.white.opacity(2) : Color.white.opacity(1))
                                     .frame(width: 40, height: 40)
+                                    .shadow(color: selectedIndex == number ? Color.white.opacity(2) : Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
                                 
                                 Text(texts[number])
                                     .font(.system(.headline, design: .rounded, weight: .heavy))
-                                    .foregroundColor(selectedIndex == number ? Color.white.opacity(2) : Color.white.opacity(0.8))
-                                     
+                                    .foregroundColor(selectedIndex == number ? Color.white.opacity(2) : Color.white.opacity(1))
+                                    .shadow(color: selectedIndex == number ? Color.white.opacity(2) : Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+                                
                             }
                             .frame(width: 100, height: 80, alignment: .center)
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                             .cornerRadius(10)
-                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
-
+                            .shadow(color: selectedIndex == number ? Color.black.opacity(0.7) : Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+                            .scaleEffect(selectedIndex == number ? 1.1 : 1)
+                            
                         }
                         
                         
@@ -105,6 +109,7 @@ struct TapBarView: View {
 struct TapBarView_Previews: PreviewProvider {
     static var previews: some View {
         TapBarView()
+            .environmentObject(EnvironmentViewModel())
     }
 }
 

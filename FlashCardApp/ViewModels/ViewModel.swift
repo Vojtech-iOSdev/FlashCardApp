@@ -17,7 +17,6 @@ class EnvironmentViewModel:ObservableObject {
         "lidi","auto", "dům", "máma", "táta","sestra", "bratr", "pes", "kočka", "město", "dveře", "okno", "les", "řeka", "voda", "strom", "pták", "jablko", "hruška", "pomeranč", "citrón", "banán"
     ]
     
-   // @Published var randomNumber: Int = 0
     @Published var flipped:Bool = false
     
     @Published var gridWords: [Int] = [0, 0, 0, 0]
@@ -30,6 +29,8 @@ class EnvironmentViewModel:ObservableObject {
     
     @Published var correctCounter: Int = 0
     @Published var wrongCounter: Int = 0
+    
+    @Published var disableButton: Bool = false
 
     
     init() {

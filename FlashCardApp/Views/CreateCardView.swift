@@ -12,41 +12,40 @@ struct CreateCardView: View {
     
     @EnvironmentObject var viewModel:EnvironmentViewModel
     
-    @Binding var createNewCardScreen: Bool
     @State var newFront: String = ""
     @State var newBack: String = ""
     
-    @State var dataArray: [String] = []
-
+    @Binding var presented: Bool
+    
     var body: some View {
         ZStack {
             
             Background
             
             Button {
-                createNewCardScreen.toggle()
+                presented.toggle()
                 
             } label: {
                 MyButton(title: "back", titleIcon: "arrow.uturn.left")
-
+                
             }.offset(x: -100, y:-330)
             
-            #warning("add new card buttons")
+#warning("add new card buttons")
             VStack(spacing: 40){
                 
                 MyTextField(textFieldTitle: "The card front is:", textFieldText: $newFront)
                 
                 MyTextField(textFieldTitle: "The card back is:", textFieldText: $newBack)
                 
-                #warning ("save new card button")
+#warning ("save new card button")
                 Button {
                     saveNewCard()
-
+                    
                 } label: {
                     MyButton(title: "save", titleIcon: "folder.badge.plus")
-
+                    
                 }
-              
+                
                 
             }.offset(y: 30)
             
@@ -62,7 +61,7 @@ struct CreateCardView: View {
 
 struct CreateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateCardView(createNewCardScreen: .constant(false))
+        CreateCardView(presented: .constant(false))
     }
 }
 
@@ -88,7 +87,7 @@ extension CreateCardView {
     
     private var Background: some View {
         ZStack{
-            LinearGradient(colors: [Color.orange.opacity(0.2), Color.orange.opacity(0.1)], startPoint: .topTrailing, endPoint: .bottomLeading)
+            LinearGradient(colors: [Color.orange.opacity(0.8), Color.orange.opacity(0.5)], startPoint: .topTrailing, endPoint: .bottomLeading)
             
             Circle()
                 .frame(width: 400)

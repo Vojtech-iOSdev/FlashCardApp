@@ -14,24 +14,23 @@ struct MyReviewButton: View {
     var stackPosition: Int
     @State var isAnimatedCorrect: Bool = false
     @State var isAnimatedWrong: Bool = false
-
-    
+        
     var body: some View {
         
         Button{
             withAnimation(Animation.default) {
                 checkForAnswer()
             }
+            viewModel.disableButton = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 viewModel.gridWords = []
                 viewModel.createCardPosition()
                 viewModel.generateGridWordsRandomPosition()
                 isAnimatedCorrect = false
                 isAnimatedWrong = false
+                viewModel.disableButton = false
             }
-          
-            
-            
+
         } label: {
             Text(viewModel.deckBack[stackPosition])
                 
@@ -44,7 +43,7 @@ struct MyReviewButton: View {
                 .background(isAnimatedCorrect ? Color.green.opacity(1) : Color.white.opacity(0))
                 .background(isAnimatedWrong ? Color.red.opacity(1) : Color.white.opacity(0))
                     
-        }
+        }.disabled(viewModel.disableButton)
                
     }
     func checkForAnswer() {
